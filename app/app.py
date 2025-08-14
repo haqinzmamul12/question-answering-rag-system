@@ -1,6 +1,10 @@
-import streamlit as st 
-from services import pdf_processor, embedder, retriever, generator 
+import streamlit as st  
 import tempfile 
+import os 
+import sys 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from services import pdf_processor, embedder, generator
 
 st.set_page_config(page_title ="PDF Q&A with Langchain + Gemma", layout ="centered")
 st.title("Ask Questions from Your PDF")
@@ -21,6 +25,7 @@ if uploaded_file:
         raw_text =pdf_processor.extract_text(tmp_path) 
         documents =pdf_processor.chunk_text(raw_text) 
         vectorstore =embedder.create_vectorstore(documents)
+
         st.session_state.vectorstore =vectorstore 
     st.success("Document Indexed! Drop your question below.")
 
