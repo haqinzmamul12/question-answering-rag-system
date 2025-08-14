@@ -1,6 +1,6 @@
 from langchain.embeddings import HuggingFaceBgeEmbeddings
 from langchain.vectorstores import FAISS 
-from app.constants import EMBED_MODEL_NAME
+from constants import EMBED_MODEL_NAME
 
 def create_vectorstore(documents):
     try:

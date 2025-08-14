@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # Make sure Python can see /app as a package
-ENV PYTHONPATH="${PYTHONPATH}:/app"
+# ENV PYTHONPATH="${PYTHONPATH}:/app"
 
 # Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
@@ -16,4 +16,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 EXPOSE 8501
 
 # Run Streamlit with the module path
-CMD ["streamlit", "run", "app/app.py", "--server.headless=true"]
+CMD ["streamlit", "run", "app.py", "--server.headless=true"]

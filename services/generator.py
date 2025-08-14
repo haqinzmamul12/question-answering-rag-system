@@ -1,8 +1,8 @@
 from langchain_core import ChatGroq
 from langchain.prompts import PromptTemplate 
 from langchain.schema.runnable import RunnablePassthrough 
-from app.config import GROQ_API_KEY 
-from app.constants import GEMMA_MODEL_NAME
+from config import GROQ_API_KEY 
+from constants import GEMMA_MODEL_NAME
 from services.retriever import get_retriever
 from langchain.schema.output_parser import StrOutputParser 
 import os 

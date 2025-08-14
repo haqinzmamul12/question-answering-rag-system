@@ -1,9 +1,6 @@
 import streamlit as st  
 import tempfile 
-import os 
-import sys 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from services import pdf_processor, embedder, generator
 
 st.set_page_config(page_title ="PDF Q&A with Langchain + Gemma", layout ="centered")
