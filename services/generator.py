@@ -1,4 +1,4 @@
-from langchain_core import ChatGroq
+from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate 
 from langchain.schema.runnable import RunnablePassthrough 
 from config import GROQ_API_KEY 
