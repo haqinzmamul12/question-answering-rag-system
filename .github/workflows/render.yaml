@@ -8,6 +8,7 @@ on:
 
 jobs:
     build:
+        name: Build and Test
         runs-on: ubuntu-latest 
 
         env:
@@ -41,13 +42,15 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v3 
 
-          - name: log in to DockerHub 
-            run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          - name: Log in to DockerHub 
+            uses: docker/login-action@v2
+            with:
+                username: ${{ secrets.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-          - name: Build Docker Image 
-            run: | 
-              docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/rag-app 
-
-          - name: Push Docker Image to Hub 
-            run: | 
-              docker push ${{secrets.DOCKERHUB_USERNAME}}/rag-app
+          - name: Build and Push Docker Image 
+            uses: docker/build-push-action@v4 
+            with:
+                context: .
+                push: true 
+                tags: ${{ secrets.DOCKERHUB_USERNAME }}/rag-app:latest
