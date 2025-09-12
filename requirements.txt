@@ -4,6 +4,6 @@ langchain
 sentence-transformers
 faiss-cpu
 python-dotenv 
-langchain-community 
-langchain-groq 
+langchain-community  
 pypdf 
+langchain-cohere

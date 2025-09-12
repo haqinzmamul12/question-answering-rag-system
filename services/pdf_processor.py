@@ -1,5 +1,5 @@
 from constants import CHUNK_SIZE, CHUNK_OVERLAP 
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def extract_text(pdf_path):

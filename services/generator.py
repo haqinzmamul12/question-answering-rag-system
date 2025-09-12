@@ -1,15 +1,21 @@
-from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate 
 from langchain.schema.runnable import RunnablePassthrough 
-from config import GROQ_API_KEY 
-from constants import GEMMA_MODEL_NAME
-from services.retriever import get_retriever
-from langchain.schema.output_parser import StrOutputParser 
+from constants import MODEL_NAME
+from langchain.schema.output_parser import StrOutputParser
+from langchain_cohere.chat_models import ChatCohere 
 import os 
+import pickle
+from dotenv import load_dotenv
 
-os.environ["GROQ_API_KEY"] =GROQ_API_KEY 
+load_dotenv()  # Load from .env if present
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
-def get_answer(query, vectorstore):
+if not COHERE_API_KEY:
+    raise ValueError("GROQ_API_KEY is missing. Please set it in Render environment variables.")
+os.environ["COHERE_API_KEY"] = COHERE_API_KEY
+
+
+def get_answer(query, retriever):
     try:
         template ="""
         You are an AI assistant and you have been tasked to answer the user query based on the following context.
@@ -24,17 +30,17 @@ def get_answer(query, vectorstore):
             input_variables= ["context", "question"]
         )
 
-        retriever =get_retriever(vectorstore)
-        llm =ChatGroq(model_name =GEMMA_MODEL_NAME)
+
+        llm = ChatCohere(model =MODEL_NAME)
 
         rag_chain =(
-            {"Context": retriever, "question": RunnablePassthrough()}
+            {"context": retriever, "question": RunnablePassthrough()}
             | prompt 
             | llm 
             | StrOutputParser() 
         )
         response =rag_chain.invoke(query)
-        return response 
+        return response
     
     except Exception as e:
         print(f"Error occured at generator side: {repr(e)}")

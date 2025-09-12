@@ -2,7 +2,7 @@ CHUNK_SIZE =500
 CHUNK_OVERLAP =50 
 
 # HuggingFace Embedding Model 
-EMBED_MODEL_NAME ="BAAI/bge-base-en-v1.5"
+EMBED_MODEL_NAME ="embed-english-light-v3.0"
 
 # Gemma model served by ChatGroq 
-GEMMA_MODEL_NAME ="gemma2-9b-it"
+MODEL_NAME ="command-r"
