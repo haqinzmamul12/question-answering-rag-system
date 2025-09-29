@@ -5,4 +5,5 @@ CHUNK_OVERLAP =50
 EMBED_MODEL_NAME ="embed-english-light-v3.0"
 
 # Gemma model served by ChatGroq 
-MODEL_NAME ="command-r"
+
+MODEL_NAME ="llama-3.3-70b-versatile"

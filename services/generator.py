@@ -31,7 +31,8 @@ def get_answer(query, retriever):
         )
 
 
-        llm = ChatCohere(model =MODEL_NAME)
+        # llm = ChatCohere(model =MODEL_NAME)  command-a-03-2025
+        llm = ChatCohere(model ="command-a-03-2025")  
 
         rag_chain =(
             {"context": retriever, "question": RunnablePassthrough()}
@@ -43,4 +44,4 @@ def get_answer(query, retriever):
         return response
     
     except Exception as e:
-        print(f"Error occured at generator side: {repr(e)}")
+        print(f"Error occured at generator side: {e}")

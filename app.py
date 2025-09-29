@@ -39,6 +39,4 @@ if query and st.session_state.retriever:
         st.markdown("## Answer:")
         st.write(answer)
 
-
-
-# Website URL: https://rag-app-latest-3085.onrender.com/
+# Website URL: https://retrieval-information-system.onrender.com/ 
