@@ -6,4 +6,4 @@ EMBED_MODEL_NAME ="embed-english-light-v3.0"
 
 # Gemma model served by ChatGroq 
 
-MODEL_NAME ="llama-3.3-70b-versatile"
+MODEL_NAME ="command-a-03-2025"

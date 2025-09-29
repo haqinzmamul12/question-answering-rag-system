@@ -31,8 +31,7 @@ def get_answer(query, retriever):
         )
 
 
-        # llm = ChatCohere(model =MODEL_NAME)  command-a-03-2025
-        llm = ChatCohere(model ="command-a-03-2025")  
+        llm = ChatCohere(model =MODEL_NAME)  
 
         rag_chain =(
             {"context": retriever, "question": RunnablePassthrough()}
